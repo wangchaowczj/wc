@@ -93,7 +93,7 @@ void AppStartUpTask(void* p_arg)
     {
         WatchDogFeed();        
         STMOpen();
-        AutoPowerOff();
+//        AutoPowerOff();
         OSTimeDly(1);  //这个是什么功能 
     }        
 }

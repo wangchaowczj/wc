@@ -99,7 +99,8 @@ void AutoPowerOff(void)
         if(	GetAdcValue(ADC_12V_CHANNEL,10) < 2602)
         {
             count++;
-            OSTimeDly (10);       
+//            OSTimeDly (10);
+            System72MDelay1ms(1);            
         }
     }
     if(count == 10)
@@ -110,12 +111,15 @@ void AutoPowerOff(void)
             Sound(3);
         }
         SW5V_L();
-        VSHIFT_L();        
+        VSHIFT_L();//这里不能真正关掉电压
+//        LED1_ON();       
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, DISABLE);
     }
     else
     {
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, ENABLE);
         SW5V_H();
-        VSHIFT_H(); 
+        VSHIFT_H(); ; 
     }
 
 }

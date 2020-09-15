@@ -17,7 +17,7 @@ I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x5F4CEA55)
 I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x5F4CEA54)
 I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x5F4CEA54)
 I (..\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x5F4CEA55)
-F (..\USER\Task.c)(0x5F600AF6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\task.o --omf_browse .\obj\task.crf --depend .\obj\task.d)
+F (..\USER\Task.c)(0x5F606C09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\task.o --omf_browse .\obj\task.crf --depend .\obj\task.d)
 I (..\USER\includes.h)(0x5F55A16F)
 I (..\USER\stm32f10x_conf.h)(0x5F5193EC)
 I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x5F4CEA55)
@@ -114,7 +114,7 @@ I (..\CH374\CH374DeviceHid.h)(0x5F4CF678)
 I (..\USER\MidFunction.h)(0x5F51DEA7)
 I (..\USER\Recorder.h)(0x5F4CEA4C)
 I (..\USER\Watchdog.h)(0x5F518E8A)
-F (..\USER\SystemConfig.c)(0x5F5F19F9)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\systemconfig.o --omf_browse .\obj\systemconfig.crf --depend .\obj\systemconfig.d)
+F (..\USER\SystemConfig.c)(0x5F605607)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\systemconfig.o --omf_browse .\obj\systemconfig.crf --depend .\obj\systemconfig.d)
 I (..\USER\includes.h)(0x5F55A16F)
 I (..\USER\stm32f10x_conf.h)(0x5F5193EC)
 I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x5F4CEA55)
@@ -210,7 +210,7 @@ I (..\CH374\CH374DeviceHid.h)(0x5F4CF678)
 I (..\USER\MidFunction.h)(0x5F51DEA7)
 I (..\USER\Recorder.h)(0x5F4CEA4C)
 I (..\USER\Watchdog.h)(0x5F518E8A)
-F (..\USER\MidFunction.c)(0x5F5F2180)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\midfunction.o --omf_browse .\obj\midfunction.crf --depend .\obj\midfunction.d)
+F (..\USER\MidFunction.c)(0x5F606C09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\midfunction.o --omf_browse .\obj\midfunction.crf --depend .\obj\midfunction.d)
 I (..\USER\includes.h)(0x5F55A16F)
 I (..\USER\stm32f10x_conf.h)(0x5F5193EC)
 I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x5F4CEA55)
@@ -402,7 +402,7 @@ I (..\CH374\CH374DeviceHid.h)(0x5F4CF678)
 I (..\USER\MidFunction.h)(0x5F51DEA7)
 I (..\USER\Recorder.h)(0x5F4CEA4C)
 I (..\USER\Watchdog.h)(0x5F518E8A)
-F (..\USER\Adc.c)(0x5F5722E9)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\adc.o --omf_browse .\obj\adc.crf --depend .\obj\adc.d)
+F (..\USER\Adc.c)(0x5F606B3A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\CH374 -I..\CMSIS -I..\STM32F10x_StdPeriph_Driver\inc -I..\uCOS-II\Ports -I..\uCOS-II\Source -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\obj\adc.o --omf_browse .\obj\adc.crf --depend .\obj\adc.d)
 I (..\USER\includes.h)(0x5F55A16F)
 I (..\USER\stm32f10x_conf.h)(0x5F5193EC)
 I (..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x5F4CEA55)

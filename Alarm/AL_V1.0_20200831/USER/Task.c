@@ -90,12 +90,12 @@ void AppStartUpTask(void* p_arg)
     TaskCreate(APP_LED_TASK_PRIO, (void*)0);
 
     while(1)
-    {
-        WatchDogFeed();        
-        STMOpen();
-//        AutoPowerOff();
-        OSTimeDly(1);  //这个是什么功能 
-    }        
+    {   
+    WatchDogFeed();        
+    STMOpen();
+    AutoPowerOff();
+    OSTimeDly(1); 
+    }
 }
 /**
   *************************************************************************************

@@ -121,6 +121,7 @@ ErrorStatus WriteFlashDataWithCRC16(u32 addr, u16 length, u8* ptr)
 void ReadFactoryConfigParam(void)
 {
 	u8 temp[100];
+    u8 flag[2];
 	
 	//设备ID
 	ReadFlashDataWithCRC16(FACTORY_CFG_DEV_ID_ADDR, FACTORY_CFG_DEV_ID_SIZE, DeviceInfo.ID);
@@ -163,6 +164,16 @@ void ReadFactoryConfigParam(void)
 	{
 		memcpy((char*)&adc_adjust, temp, sizeof(ADC_ADJUST));
 	}
+    
+    //读取关机标志位
+    if(ERROR == ReadFlashDataWithCRC16(FACTORY_CFG_POWER_ADDR, FACTORY_CFG_POWER_SIZE, flag))
+    {
+        power_status.poweroff_flag = 0;  
+    }
+    else 
+    {
+        memcpy((char*)&power_status, flag, sizeof(POWER_STATUS));
+    }
 			
 }
 /**
@@ -180,6 +191,7 @@ void ReadFactoryConfigParam(void)
 ErrorStatus WriteFactoryConfigParam(void)
 {
 	u8 temp[100];
+    u8 flag[2];
 	
 	//擦除FLASH
 	FLASH_Unlock();
@@ -207,6 +219,13 @@ ErrorStatus WriteFactoryConfigParam(void)
 	{
 		return ERROR;
 	}
+    //写关机标志位
+    memset(flag, 0 ,sizeof(flag));
+    memcpy(flag,(char*)&power_status, sizeof(POWER_STATUS));
+    if(ERROR ==WriteFlashDataWithCRC16(FACTORY_CFG_POWER_ADDR, FACTORY_CFG_POWER_SIZE,flag))
+    {
+        return ERROR; 
+    }
 			
 	return SUCCESS;
 }

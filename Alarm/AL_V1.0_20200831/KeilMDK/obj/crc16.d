@@ -11,7 +11,9 @@
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h
+.\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h
 .\obj\crc16.o: ..\STM32F10x_StdPeriph_Driver\inc\misc.h

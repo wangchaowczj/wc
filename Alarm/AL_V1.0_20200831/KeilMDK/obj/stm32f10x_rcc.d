@@ -11,7 +11,9 @@
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h
+.\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h
 .\obj\stm32f10x_rcc.o: ..\STM32F10x_StdPeriph_Driver\inc\misc.h

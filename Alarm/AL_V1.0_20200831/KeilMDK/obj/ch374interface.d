@@ -11,7 +11,9 @@
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h
+.\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h
 .\obj\ch374interface.o: ..\STM32F10x_StdPeriph_Driver\inc\misc.h

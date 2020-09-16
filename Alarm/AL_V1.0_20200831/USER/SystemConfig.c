@@ -66,12 +66,13 @@ void GpioConfig(void)
   */
 void SystemGpioConfig(void)
 {
-    ReadFactoryConfigParam();
     DeviceInfo.name = 'A';
     op_data.UsbState = 0;
     op_data.OLED_status = 0;
-    PackageKeyInit();
     SysTickConfig();//中断一次	
+    ReadFactoryConfigParam();
+    PowerOffCheck();
+    PackageKeyInit();
     LEDConfig();	
     Ch374HardWareConfig();
     CH374DeviceInit();
@@ -79,7 +80,6 @@ void SystemGpioConfig(void)
     LcdInit();
     AdcConfig();
     GpioConfig(); 
-    WatchDogInit();    
     Time3_Init(4999,7199);//100ms中断一次
     
 }

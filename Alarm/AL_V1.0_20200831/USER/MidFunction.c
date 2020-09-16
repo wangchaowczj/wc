@@ -92,34 +92,51 @@ void STMOpen(void)
 //==================================================================================================
 void AutoPowerOff(void)
 {
-    u8 t,s,count=0;
-    
-    for(s=0;s<10;s++)
+//    u8 t,s,count=0;
+//    
+//    for(s=0;s<10;s++)
+//    {
+//        if(	GetAdcValue(ADC_12V_CHANNEL,10) < 2602)
+//        {
+//            count++;
+////            OSTimeDly (10);
+//            System72MDelay1ms(1);            
+//        }
+//    }
+//    if(count == 10)
+//    {
+//        count = 0;
+//        for(t=0;t<4;t++)
+//        {
+//            Sound(3);
+//        }
+////        Sys_Enter_Standby();
+////        SW5V_L();
+////        VSHIFT_L();//这里不能真正关掉电压
+//	    power_status.poweroff_flag = 0x01;
+//        WriteFactoryConfigParam();  
+//        SoftReset();
+//        
+////        LED1_ON();       
+////        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, DISABLE);
+//    }
+////    else
+////    {
+//////        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, ENABLE);
+////        SW5V_H();
+////        VSHIFT_H(); ; 
+////    }
+
+    if(GetAdcValue(ADC_12V_CHANNEL,10) < 2602)
     {
-        if(	GetAdcValue(ADC_12V_CHANNEL,10) < 2602)
-        {
-            count++;
-//            OSTimeDly (10);
-            System72MDelay1ms(1);            
-        }
-    }
-    if(count == 10)
-    {
-        count = 0;
-        for(t=0;t<4;t++)
-        {
-            Sound(3);
-        }
-        SW5V_L();
-        VSHIFT_L();//这里不能真正关掉电压
-//        LED1_ON();       
-        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, DISABLE);
-    }
-    else
-    {
-        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, ENABLE);
-        SW5V_H();
-        VSHIFT_H(); ; 
+//        Sound(0);
+//        System72MDelay1ms(10000); 
+//        Sound(1); 
+        LcdClear();
+        System72MDelay1ms(10);
+        power_status.poweroff_flag = 0x01;
+        WriteFactoryConfigParam();
+        SoftReset(); 
     }
 
 }
@@ -302,4 +319,58 @@ void UsbIdentify(void)
 //        }
 //    }      
 }  
+
+//==================================================================================================
+//| 函数名称 | Sys_Enter_Standby 
+//|----------|--------------------------------------------------------------------------------------
+//| 函数功能 | 进入待机模式
+//|----------|--------------------------------------------------------------------------------------
+//| 输入参数 | 无
+//|----------|--------------------------------------------------------------------------------------       
+//| 返回参数 | 无
+//|----------|--------------------------------------------------------------------------------------       
+//| 函数设计 | 编写人：王超    时间：2020-08-28
+//|----------|-------------------------------------------------------------------------------------- 
+//|   备注   | 
+//|----------|-------------------------------------------------------------------------------------- 
+//| 修改记录 | 修改人：          时间：         修改内容： 
+//==================================================================================================
+void Sys_Enter_Standby(void)
+{			 
+	RCC_APB2PeriphResetCmd(0X01FC,DISABLE);	//复位所有IO口
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);	//使能PWR外设时钟
+	PWR_WakeUpPinCmd(ENABLE);  //使能唤醒管脚功能
+	PWR_EnterSTANDBYMode();	  //进入待命（STANDBY）模式 
+}
+//==================================================================================================
+//| 函数名称 | PowerOffCheck 
+//|----------|--------------------------------------------------------------------------------------
+//| 函数功能 | 检查是否进入待机模式
+//|----------|--------------------------------------------------------------------------------------
+//| 输入参数 | 无
+//|----------|--------------------------------------------------------------------------------------       
+//| 返回参数 | 无
+//|----------|--------------------------------------------------------------------------------------       
+//| 函数设计 | 编写人：王超    时间：2020-08-28
+//|----------|-------------------------------------------------------------------------------------- 
+//|   备注   | 
+//|----------|-------------------------------------------------------------------------------------- 
+//| 修改记录 | 修改人：          时间：         修改内容： 
+//==================================================================================================
+void PowerOffCheck(void)
+{
+    if(power_status.poweroff_flag == 0x01)
+    {
+        power_status.poweroff_flag = 0;
+        WriteFactoryConfigParam();
+ 
+        Sys_Enter_Standby();
+    }
+    else 
+    {
+        power_status.poweroff_flag = 0;
+        WriteFactoryConfigParam();       
+        WatchDogInit();    
+    }
+}
 

@@ -32,6 +32,8 @@
 ".\obj\stm32f10x_flash.o"
 ".\obj\stm32f10x_iwdg.o"
 ".\obj\stm32f10x_tim.o"
+".\obj\stm32f10x_pwr.o"
+".\obj\stm32f10x_rtc.o"
 ".\obj\os_dbg.o"
 ".\obj\os_cpu_c.o"
 ".\obj\os_cpu_a.o"

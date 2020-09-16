@@ -14,6 +14,7 @@ __align(8) APP_PRIVATE_STK PrivateStk; //汇编字节对齐
 MSG_SEM MsgSem;//信号量
 DEVICE_INFO DeviceInfo;//设备信息
 OP_DATA op_data;//状态标志位
+POWER_STATUS power_status;
 
 /**
   *************************************************************************************

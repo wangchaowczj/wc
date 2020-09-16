@@ -40,7 +40,11 @@ typedef struct
 }DEVICE_INFO;
 extern DEVICE_INFO DeviceInfo;
 
-
+typedef struct 
+{
+    u8 poweroff_flag;
+}POWER_STATUS;
+extern POWER_STATUS power_status;
 
 extern void AppStartUpTask(void* p_arg);
 extern INT8U TaskCreate(INT8U prio, void*  p_arg);

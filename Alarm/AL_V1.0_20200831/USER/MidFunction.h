@@ -7,6 +7,9 @@ extern void AutoPowerOff(void);
 extern void Sound(u8 p_arg);
 extern void OLEDDisplay(void);
 extern void UsbIdentify(void);
+extern void Sys_Enter_Standby(void);
+extern void PowerOffCheck(void);
+
 
 #endif
 

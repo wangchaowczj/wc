@@ -233,7 +233,7 @@ s16 GetLinABAdcValue(void)
 	s16 value = 0;
 
 	AdcLock();//申请资源
-	lina = GetAdcValue(ADC_LINEAA_CHANNEL, 10);
+	lina = GetAdcValue(ADC_LINEA_CHANNEL, 10);
 	linb = GetAdcValue(ADC_LINEB_CHANNEL, 10);	
 	value = linb - lina;
 	AdcUnlock();//释放资源

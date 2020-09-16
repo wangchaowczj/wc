@@ -372,7 +372,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 					{
 						U16Value1 = (u16)(adc_adjust.linab.k*1000);
 						U16Value2 = adc_adjust.linab.b;	
-                        U16Value3 = adc_adjust.linab.year;
+                        U16Value3 = adc_adjust.linab.year + 2000;
                         Temp[0] = adc_adjust.linab.month;
                         Temp[1] = adc_adjust.linab.day;
                         Temp[2] = adc_adjust.linab.hour;
@@ -384,7 +384,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 					{
 						U16Value1 = (u16)(adc_adjust.current1.k*1000);
 						U16Value2 = adc_adjust.current1.b;	
-                        U16Value3 = adc_adjust.linab.year;
+                        U16Value3 = adc_adjust.linab.year + 2000;
                         Temp[0] = adc_adjust.current1.month;
                         Temp[1] = adc_adjust.current1.day;
                         Temp[2] = adc_adjust.current1.hour;
@@ -395,7 +395,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 					{
 						U16Value1 = (u16)(adc_adjust.current2.k*1000);
 						U16Value2 = adc_adjust.current2.b;	
-                        U16Value3 = adc_adjust.current2.year;
+                        U16Value3 = adc_adjust.current2.year + 2000;
                         Temp[0] = adc_adjust.current2.month;
                         Temp[1] = adc_adjust.current2.day;
                         Temp[2] = adc_adjust.current2.hour;
@@ -493,7 +493,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 					{
 						adc_adjust.linab.k = U16Value1/1000.0;
 						adc_adjust.linab.b = U16Value2;
-                        adc_adjust.linab.year = Temp[0] + 2000;
+                        adc_adjust.linab.year = Temp[0];
                         adc_adjust.linab.month = Temp[1];
                         adc_adjust.linab.day = Temp[2];
                         adc_adjust.linab.hour = Temp[3];
@@ -504,7 +504,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 					{
 						adc_adjust.current1.k = U16Value1/1000.0;
 						adc_adjust.current1.b = U16Value2;
-                        adc_adjust.current1.year = Temp[0] + 2000;
+                        adc_adjust.current1.year = Temp[0];
                         adc_adjust.current1.month = Temp[1];
                         adc_adjust.current1.day = Temp[2];
                         adc_adjust.current1.hour = Temp[3];
@@ -515,7 +515,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 					{
 						adc_adjust.current2.k = U16Value1/1000.0;
 						adc_adjust.current2.b = U16Value2;		
-                        adc_adjust.current2.year = Temp[0] + 2000;
+                        adc_adjust.current2.year = Temp[0];
                         adc_adjust.current2.month = Temp[1];
                         adc_adjust.current2.day = Temp[2];
                         adc_adjust.current2.hour = Temp[3];

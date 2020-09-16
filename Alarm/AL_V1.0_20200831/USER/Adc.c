@@ -233,7 +233,7 @@ s16 GetLinABAdcValue(void)
 	s16 value = 0;
 
 	AdcLock();//申请资源
-	lina = GetAdcValue(ADC_LINEA_CHANNEL, 10);
+	lina = GetAdcValue(ADC_LINEAA_CHANNEL, 10);
 	linb = GetAdcValue(ADC_LINEB_CHANNEL, 10);	
 	value = linb - lina;
 	AdcUnlock();//释放资源
@@ -574,25 +574,27 @@ u8 BusIsShort(void)
 //|----------|-------------------------------------------------------------------------------------- 
 //| 修改记录 | 修改人：          时间：         修改内容： 
 //==================================================================================================
-u8 BusLeakIsShort(void)
+u8 BusLeakIsShort(u16* current)
 {
-	u8 temp;	
+	u8 temp;
     u16 value;
-	
-		value = GetBusLeakCurrent(NULL);
-		if(value > 500)
-		{
-			OSTimeDly(100); 
-            if(value > 500)
-            {
-                temp = 1;
-            }
-		}
-        else
+    
+    value  = GetBusLeakCurrent(NULL);
+    *current = value; 
+    
+    if(value > 500)
+    {
+        OSTimeDly(100); 
+        if(value  > 500)
         {
-            temp = 0;
+            temp = 1;
         }
-        return temp; 
+    }
+    else
+    {
+        temp = 0;
+    }
+    return temp; 
 }
 
 //==================================================================================================

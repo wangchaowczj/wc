@@ -65,7 +65,6 @@ typedef struct
 }ADC_ADJUST;//结构体嵌套
 extern ADC_ADJUST adc_adjust; //ADC校准参数
 
-
 #define DEFAULT_ADC_PARAM 		    4.0045      //其他电压分压比20.3K:80.6K，单位为mV
 #define DEFAULT_POWER_PARAM         4.035       //电源电压分压比49.9K:200K
 #define DEFAULT_I1_PARAM			1.07        //采样电阻为49.9R，小量程，放大倍数25，分压电阻比20.3K:30.9K (3.3/4096)*(51.2/30.9)/25/49.9 
@@ -82,7 +81,7 @@ extern u16 Adc2VoltageOrCurrent(u16 Adc, ADJUST_PARAMETER* Adjust, float Default
 extern u16 GetBusCurrent(u8 rd_count, u16* AdcValue);
 extern u16 GetBusLeakCurrent(u16* AdcValue);
 extern u8 BusIsShort(void);
-extern u8 BusLeakIsShort(void);
+extern u8 BusLeakIsShort(u16* current);
 extern u16  EliminateBusCurrentErr(void);
 //extern u8 FirstDetInsert(void);
 extern u8 BusCurrentIsZero(void);

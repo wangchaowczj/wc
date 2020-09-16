@@ -92,46 +92,15 @@ void STMOpen(void)
 //==================================================================================================
 void AutoPowerOff(void)
 {
-//    u8 t,s,count=0;
-//    
-//    for(s=0;s<10;s++)
-//    {
-//        if(	GetAdcValue(ADC_12V_CHANNEL,10) < 2602)
-//        {
-//            count++;
-////            OSTimeDly (10);
-//            System72MDelay1ms(1);            
-//        }
-//    }
-//    if(count == 10)
-//    {
-//        count = 0;
-//        for(t=0;t<4;t++)
-//        {
-//            Sound(3);
-//        }
-////        Sys_Enter_Standby();
-////        SW5V_L();
-////        VSHIFT_L();//这里不能真正关掉电压
-//	    power_status.poweroff_flag = 0x01;
-//        WriteFactoryConfigParam();  
-//        SoftReset();
-//        
-////        LED1_ON();       
-////        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, DISABLE);
-//    }
-////    else
-////    {
-//////        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC, ENABLE);
-////        SW5V_H();
-////        VSHIFT_H(); ; 
-////    }
-
-    if(GetAdcValue(ADC_12V_CHANNEL,10) < 2602)
+    u16 value;
+    char temp[5];
+    
+    value = GetAdcValue(ADC_12V_CHANNEL,10);
+    if( value < 2602)
     {
-//        Sound(0);
-//        System72MDelay1ms(10000); 
-//        Sound(1); 
+        sprintf(temp,"电源:%.1fV",(float)(value*DEFAULT_POWER_PARAM/1000));
+        LcdShowStrCenter(temp); 
+        System72MDelay1ms(1000);
         LcdClear();
         System72MDelay1ms(10);
         power_status.poweroff_flag = 0x01;
@@ -171,9 +140,9 @@ void Sound(u8 p_arg)
     else if(p_arg == 2)
     {
         SOUND_H();
-        System72MDelay1ms(300);
+        System72MDelay1ms(200);
         SOUND_L();
-				System72MDelay1ms(300);
+        System72MDelay1ms(400);        
     }
     else if(p_arg == 3)
     {
@@ -181,15 +150,15 @@ void Sound(u8 p_arg)
         System72MDelay1ms(100);
         SOUND_L();
         System72MDelay1ms(300);
-                SOUND_H();
+        SOUND_H();
         System72MDelay1ms(100);
         SOUND_L();
         System72MDelay1ms(250);
-                SOUND_H();
+        SOUND_H();
         System72MDelay1ms(100);
         SOUND_L();
         System72MDelay1ms(200);
-                SOUND_H();
+        SOUND_H();
         System72MDelay1ms(100);
         SOUND_L();
         System72MDelay1ms(150);        
@@ -212,7 +181,7 @@ void Sound(u8 p_arg)
 //==================================================================================================
 void OLEDDisplay(void)
 {
-    u16 ADC_12V,ADC_I1,ADC_I2,ADC_COMOUT;   
+    u16 ADC_12V,ADC_I1,ADC_COMOUT,current;   
     char Temp1[10];
     char Temp2[10]; 
    
@@ -222,6 +191,10 @@ void OLEDDisplay(void)
         op_data.OLED_status = 0x01;
         LcdShowStr2Center("鲲程电子","V1.0");
         OSTimeDly(1000);
+        ADC_12V = GetBatteryVoltage();   
+        sprintf(Temp1,"电源:%.1fV",(float)ADC_12V/1000);
+        LcdShowStrCenter(Temp1);
+        OSTimeDly(1000);
     }
     else
     {
@@ -230,31 +203,29 @@ void OLEDDisplay(void)
             SW5V_L();//输出0V
             VSHIFT_L();//COM_OUT输出0V
             Sound(0);
-            LcdShowStrCenter("总线异常");
+            LcdShowStrCenter("总线短路");
             OSTimeDly(1000);
             SW5V_H();//输出5V
             VSHIFT_H();//COM_OUT输出6.7V            
         }
-        else if(BusLeakIsShort() == 1)
+        else if(BusLeakIsShort(&current) == 1)
         {
-            Sound(0);
-            LcdShowStrCenter("漏电流大");
+//            Sound(2);
+//            sprintf(Temp2,"0x01 %.0fuA",(float)current);
+//            LcdShowStr2Center("漏电流大",Temp2);
+
         }
         else
         {
             Sound(1);            
-            ADC_12V = GetBatteryVoltage();   
             ADC_COMOUT = GetBusVoltage(10,NULL); 
-            sprintf(Temp1,"电源:%.1fV",(float)ADC_12V/1000);
-            sprintf(Temp2,"总线:%.1fV",(float)ADC_COMOUT/1000);
-            LcdShowStr2Center(Temp1,Temp2);                    
-            OSTimeDly(500);
+            sprintf(Temp2,"%.1fV",(float)ADC_COMOUT/1000);
+            LcdShowStrCenter(Temp2);                    
+            OSTimeDly(1000);
             ADC_I1 = EliminateBusCurrentErr();
-            ADC_I2 = GetBusLeakCurrent(NULL);
-            sprintf(Temp1,"总:%.1fuA",(float)ADC_I1);
-            sprintf(Temp2,"漏:%.1fuA",(float)ADC_I2);
-            LcdShowStr2Center(Temp1,Temp2); 
-            OSTimeDly(500);                
+            sprintf(Temp1,"%.0fuA",(float)ADC_I1);
+            LcdShowStrCenter(Temp1); 
+            OSTimeDly(1000);                
         }
     }       
     
@@ -290,34 +261,7 @@ void UsbIdentify(void)
     {
         LED3_ON();
         LED4_OFF();
-    }
-   
-//    if(op_data.UsbState != 0xFF)
-//    {
-//        if(USB_FLAG == 1)
-//        {
-
-//            if(0x01 != (op_data.UsbState & 0x07))
-//            {
-//                op_data.UsbState = 0x01;
-//     
-//                LED4_ON();
-//                LED3_OFF();
-//                USB_VBUS_L();
-//            }
-//            
-//        }
-//        else if(USB_FLAG == 0)
-//        {
-//            if(0x02 != (op_data.UsbState & 0x07))
-//            {
-//                op_data.UsbState = 0x02;
-//                LED3_ON();
-//                LED4_OFF();
-//                USB_VBUS_H();
-//            }
-//        }
-//    }      
+    }      
 }  
 
 //==================================================================================================
@@ -363,7 +307,6 @@ void PowerOffCheck(void)
     {
         power_status.poweroff_flag = 0;
         WriteFactoryConfigParam();
- 
         Sys_Enter_Standby();
     }
     else 

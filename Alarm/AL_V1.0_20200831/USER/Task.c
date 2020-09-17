@@ -92,7 +92,7 @@ void AppStartUpTask(void* p_arg)
 
     while(1)
     {   
-    WatchDogFeed();        
+    WatchDogFeed();  
     STMOpen();
     AutoPowerOff();
     OSTimeDly(1); 

@@ -27,6 +27,7 @@ typedef struct
     u8 STM_status;
     u8 IZero_status;
     u8 I_ST;
+//    u8 USB_INTER;
 }OP_DATA;
 
 extern OP_DATA op_data;

@@ -268,3 +268,29 @@ ErrorStatus Ch374HardwareState(void)
 	}
 	return ERROR;
 }
+/**
+  *************************************************************************************
+  * @brief  读取0x09H第5位的数据，判断是否有USB连接
+  * @param  无
+  * @retval 无
+  * @author 王超
+  * @date   2020年9月17日
+  * @note   不起作用
+  *************************************************************************************  
+  */
+//void Ch374UsbStatus(void)
+//    {
+//    u8 value;
+//    
+//    value = Read374Byte(0x09);
+////    sprintf(temp,"%d",value); 
+////    LcdShowStrCenter(temp); 
+
+//    if((value & 0x40) == 0X40)
+//    {
+//        op_data.USB_INTER = 0x01;
+//        OSTimeDly(100000);
+//        op_data.USB_INTER = 0; 
+//    }
+//}
+

@@ -339,7 +339,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
 
                     OSTaskSuspend(APP_OLED_TASK_PRIO);
                     U16Value1 = GetBusCurrent(10, &U16Value2);					
-                    OSTaskResume(APP_OLED_TASK_PRIO);                    
+//                    OSTaskResume(APP_OLED_TASK_PRIO);                    
                     
                     buffer_out->bytenum += sprintf((char*)&buffer_out->uch_buf[buffer_out->bytenum], 
                     "%u\r%u\r", U16Value1, U16Value2); 
@@ -351,7 +351,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
                     GetGeneralRespondData(buffer_out, Cmd, HostPack);//·µ»ØÊý¾Ý
 
                     U16Value1 = GetBusVoltage(10, &U16Value2);	
-                    OSTaskResume(APP_OLED_TASK_PRIO);                    
+//                    OSTaskResume(APP_OLED_TASK_PRIO);                    
 
                     buffer_out->bytenum += sprintf((char*)&buffer_out->uch_buf[buffer_out->bytenum], 
                     "%u\r%u\r", U16Value1, U16Value2);                  
@@ -499,6 +499,7 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
                         adc_adjust.linab.hour = Temp[3];
                         adc_adjust.linab.minute = Temp[4];
                         adc_adjust.linab.second = Temp[5];
+                        OSTaskResume(APP_OLED_TASK_PRIO);
 					}
 					else if(U8Value == 1)
 					{
@@ -509,7 +510,8 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
                         adc_adjust.current1.day = Temp[2];
                         adc_adjust.current1.hour = Temp[3];
                         adc_adjust.current1.minute = Temp[4];
-                        adc_adjust.current1.second = Temp[5];                        
+                        adc_adjust.current1.second = Temp[5]; 
+                        OSTaskResume(APP_OLED_TASK_PRIO);
 					}
 					else if(U8Value == 2)
 					{
@@ -520,7 +522,8 @@ void  GuestRespond(STR_COMM *buffer_in, STR_COMM *buffer_out)
                         adc_adjust.current2.day = Temp[2];
                         adc_adjust.current2.hour = Temp[3];
                         adc_adjust.current2.minute = Temp[4];
-                        adc_adjust.current2.second = Temp[5];                        
+                        adc_adjust.current2.second = Temp[5];
+                        OSTaskResume(APP_OLED_TASK_PRIO);
 					}
                     
                     if(ERROR == WriteFactoryConfigParam())

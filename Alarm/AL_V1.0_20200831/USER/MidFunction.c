@@ -209,11 +209,10 @@ void OLEDDisplay(void)
             VSHIFT_H();//COM_OUT输出6.7V            
         }
         else if(BusLeakIsShort(&current) == 1)
-        {
-//            Sound(2);
-//            sprintf(Temp2,"0x01 %.0fuA",(float)current);
-//            LcdShowStr2Center("漏电流大",Temp2);
-
+        { 
+            Sound(2);
+            sprintf(Temp2,"0x01 %.0fuA",(float)current);
+            LcdShowStr2Center("漏电流大",Temp2);            
         }
         else
         {

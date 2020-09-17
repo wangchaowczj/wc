@@ -50,5 +50,6 @@ extern void CH374WriteBlockZero(u8 mAddr, u8 mLen);
 extern void Read374Block(u8 mAddr, u8 mLen, u8* mBuf);
 extern void Write374Block(u8 mAddr, u8 mLen, u8* mBuf);
 extern ErrorStatus Ch374HardwareState(void);
+//extern void Ch374UsbStatus(void);
 #endif
 
